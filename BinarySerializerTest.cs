@@ -20,6 +20,7 @@ namespace MsgPack.Repro
 
             var stream = new MemoryStream();
             await MessagePackSerializer.SerializeAsync(typeof(string), stream, testObject, _standardOptions, default).ConfigureAwait(false);
+            stream.Position = 0;
 
             var deserialized = await MessagePackSerializer.DeserializeAsync<string>(stream, _standardOptions, default).ConfigureAwait(false);
             Assert.True(deserialized.Equals(testObject));
@@ -32,6 +33,7 @@ namespace MsgPack.Repro
 
             var stream = new MemoryStream();
             await MessagePackSerializer.SerializeAsync(typeof(string), stream, testObject, _standardOptions, default).ConfigureAwait(false);
+            stream.Position = 0;
 
             var deserialized = MessagePackSerializer.Deserialize<string>(stream.ToArray(), _standardOptions, default);
             Assert.True(deserialized.Equals(testObject));
@@ -49,6 +51,7 @@ namespace MsgPack.Repro
 
             var stream = new MemoryStream();
             await MessagePackSerializer.SerializeAsync(typeof(IList<Guid>), stream, testObject, _standardOptions, default).ConfigureAwait(false);
+            stream.Position = 0;
 
             var deserialized = await MessagePackSerializer.DeserializeAsync<IList<Guid>>(stream, _standardOptions, default).ConfigureAwait(false);
 
@@ -67,6 +70,7 @@ namespace MsgPack.Repro
 
             var stream = new MemoryStream();
             await MessagePackSerializer.SerializeAsync(typeof(IList<Guid>), stream, testObject, _standardOptions, default).ConfigureAwait(false);
+            stream.Position = 0;
 
             var deserialized = MessagePackSerializer.Deserialize<IList<Guid>>(stream.ToArray(), _standardOptions, default);
 
@@ -80,6 +84,7 @@ namespace MsgPack.Repro
 
             var stream = new MemoryStream();
             await MessagePackSerializer.SerializeAsync(typeof(string), stream, testObject, _contractlessOptions, default).ConfigureAwait(false);
+            stream.Position = 0;
 
             var deserialized = await MessagePackSerializer.DeserializeAsync<string>(stream, _contractlessOptions, default).ConfigureAwait(false);
             Assert.True(deserialized.Equals(testObject));
@@ -109,6 +114,7 @@ namespace MsgPack.Repro
 
             var stream = new MemoryStream();
             await MessagePackSerializer.SerializeAsync(typeof(IList<Guid>), stream, testObject, _contractlessOptions, default).ConfigureAwait(false);
+            stream.Position = 0;
 
             var deserialized = await MessagePackSerializer.DeserializeAsync<IList<Guid>>(stream, _contractlessOptions, default).ConfigureAwait(false);
 
@@ -127,6 +133,7 @@ namespace MsgPack.Repro
 
             var stream = new MemoryStream();
             await MessagePackSerializer.SerializeAsync(typeof(IList<Guid>), stream, testObject, _contractlessOptions, default).ConfigureAwait(false);
+            stream.Position = 0;
 
             var deserialized = MessagePackSerializer.Deserialize<IList<Guid>>(stream.ToArray(), _contractlessOptions, default);
 
